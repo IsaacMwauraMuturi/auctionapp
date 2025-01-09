@@ -1,19 +1,18 @@
+
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 public class AuctionManager {
-    BeanAuction auction;
-     List<BeanAuction> auctions;
+
+    List<BeanAuction> auctions;
     DatabaseHandler databaseHandler;
-    UserDao userDao;
 
     public AuctionManager() {
         auctions = new ArrayList<>();
         databaseHandler = new DatabaseHandler();
-        userDao = new UserDao(databaseHandler);
+        new UserDao(databaseHandler);
     }
 
     public BeanAuction createAuction(BeanUser seller, String name, String description, double startingBid, LocalDateTime startTime, LocalDateTime endTime, Boolean ended) {
@@ -24,8 +23,7 @@ public class AuctionManager {
         return auction;
     }
 
-
-     void saveAuctionToDatabase(BeanAuction auction) {
+    void saveAuctionToDatabase(BeanAuction auction) {
         try {
             Connection connection = databaseHandler.getConnection();
             PreparedStatement statement = connection.prepareStatement("INSERT INTO auctions (name, description, starting_bid, start_time, end_time, seller_id, ended) VALUES (?, ?, ?, ?, ?, ?, ?)");
@@ -43,8 +41,6 @@ public class AuctionManager {
             e.printStackTrace();
         }
     }
-
-
 
     public ArrayList<BeanAuction> loadAuctionsFromDatabase() {
         ArrayList<BeanAuction> loadedAuctions = new ArrayList<>();
@@ -69,7 +65,6 @@ public class AuctionManager {
                 BeanAuction auction = new BeanAuction(auctionId, name, description, startingBid, startTime, endTime, seller, new ArrayList<>(), ended);
                 loadedAuctions.add(auction);
 
-
             }
             resultSet.close();
             statement.close();
@@ -81,16 +76,12 @@ public class AuctionManager {
         return loadedAuctions;
     }
 
-
-
     private boolean isAuctionsTableEmpty() throws SQLException {
         boolean isEmpty = true;
 
         // Query the "auctions" table to check if it is empty
         String query = "SELECT COUNT(*) FROM auctions";
-        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test_jdbc",  "root", "");
-             Statement statement = connection.createStatement();
-             ResultSet resultSet = statement.executeQuery(query)) {
+        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test_jdbc", "root", ""); Statement statement = connection.createStatement(); ResultSet resultSet = statement.executeQuery(query)) {
 
             if (resultSet.next()) {
                 int rowCount = resultSet.getInt(1);
@@ -100,7 +91,6 @@ public class AuctionManager {
 
         return isEmpty;
     }
-
 
     public void updateAuctionInDatabase(BeanAuction auction, LocalDateTime startTime, LocalDateTime endTime) {
         try {
@@ -131,19 +121,15 @@ public class AuctionManager {
         }
     }
 
-
-
-
-
-        public ArrayList<BeanAuction> getActiveAuctions() {
-            ArrayList<BeanAuction> activeAuctions = new ArrayList<>();
-            for (BeanAuction auction : loadAuctionsFromDatabase()) {
-                if (auction.isActive()) {
-                    activeAuctions.add(auction);
-                }
+    public ArrayList<BeanAuction> getActiveAuctions() {
+        ArrayList<BeanAuction> activeAuctions = new ArrayList<>();
+        for (BeanAuction auction : loadAuctionsFromDatabase()) {
+            if (auction.isActive()) {
+                activeAuctions.add(auction);
             }
-            return activeAuctions;
         }
+        return activeAuctions;
+    }
 
     public ArrayList<BeanAuction> searchAuctions(String searchCriteria) {
         ArrayList<BeanAuction> matchingAuctions = new ArrayList<>();
@@ -170,12 +156,8 @@ public class AuctionManager {
         return auctionsByUser;
     }
 
-
     public void displayAuctionDetails(BeanAuction auction) {
         System.out.println(auction.toString());
     }
-
-
-
 
 }
