@@ -21,7 +21,6 @@ public class ControllerAuction {
     private BeanUser seller;
     public BeanUser loggedInUser;
 
-
     @FXML
     private TextField auctionNameTextField;
 
@@ -47,23 +46,38 @@ public class ControllerAuction {
 
     private Main main;
 
-
+    /**
+     * Sets the main application instance.
+     * 
+     * @param main The main application instance.
+     */
     public void setMain(Main main) {
         this.main = main;
     }
 
-
-
+    /**
+     * Sets the auction manager instance.
+     * 
+     * @param auctionManager The auction manager instance.
+     */
     public void setAuctionManager(AuctionManager auctionManager) {
         this.auctionManager = auctionManager;
     }
 
+    /**
+     * Sets the logged-in user.
+     * 
+     * @param user The logged-in user.
+     */
     public void setLoggedInUser(BeanUser user) {
         this.loggedInUser = user;
     }
 
-
-
+    /**
+     * Handles the back button action.
+     * 
+     * @param event The action event.
+     */
     @FXML
     private void handleBackButton(ActionEvent event) {
         try {
@@ -86,9 +100,9 @@ public class ControllerAuction {
         }
     }
 
-
-
-
+    /**
+     * Handles the create auction action.
+     */
     @FXML
     private void handleCreateAuction() {
         seller = loggedInUser;
@@ -112,7 +126,5 @@ public class ControllerAuction {
         System.out.println(seller.getUsername());
 
         BeanAuction auction = auctionManager.createAuction(seller, name, description, startingBid, startDateTime, endDateTime, false);
-
-
     }
 }
