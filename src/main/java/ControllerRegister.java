@@ -11,7 +11,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-
 public class ControllerRegister {
 
     @FXML
@@ -31,10 +30,16 @@ public class ControllerRegister {
 
     private UserDao userDao;
 
+    /**
+     * Initializes the controller.
+     */
     public void initialize() {
         userDao = new UserDao(new DatabaseHandler());
     }
 
+    /**
+     * Handles the registration process.
+     */
     @FXML
     public void handleRegister() {
         String name = nameField.getText();
@@ -66,6 +71,12 @@ public class ControllerRegister {
         }
     }
 
+    /**
+     * Handles the login button action.
+     * 
+     * @param event The action event.
+     * @throws IOException if an I/O error occurs.
+     */
     @FXML
     private void LoginButtonHandle(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
@@ -76,9 +87,11 @@ public class ControllerRegister {
         stage.show();
     }
 
+    /**
+     * Closes the current window.
+     */
     private void closeWindow() {
         Stage stage = (Stage) registerButton.getScene().getWindow();
         stage.close();
     }
-
 }
