@@ -1,14 +1,5 @@
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -25,11 +16,20 @@ public class ControllerUserPageCard {
     @FXML
     private Label auctionStartingBidLabel;
 
+    /**
+     * Sets the user whose data is to be displayed.
+     * 
+     * @param user The user.
+     */
     public void setUser(BeanUser user) {
         this.user = user;
     }
 
-
+    /**
+     * Sets the auction data to be displayed.
+     * 
+     * @param auction The auction whose data is to be displayed.
+     */
     public void setAuctionData(BeanAuction auction) {
         AuctionManager auctionManager = new AuctionManager();
         ArrayList<BeanAuction> auctions = auctionManager.getAuctionsByUser(user);
@@ -47,7 +47,4 @@ public class ControllerUserPageCard {
             System.out.println("Auction not found in the loaded data.");
         }
     }
-
-
-
 }

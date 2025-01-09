@@ -14,15 +14,10 @@ import java.util.Comparator;
 
 public class ControllerAuctionPage {
     private BeanAuction auction;
-
     private BeanUser seller;
-
     public BeanUser loggedInUser;
-
     private ControllerAuction auctionController;
-
     private ControllerAuctionCard auctionCardController;
-
     private Main main;
 
     @FXML
@@ -55,24 +50,48 @@ public class ControllerAuctionPage {
     @FXML
     private Button backButton;
 
+    /**
+     * Sets the main application instance.
+     * 
+     * @param main The main application instance.
+     */
     public void setMain(Main main) {
         this.main = main;
     }
 
+    /**
+     * Sets the logged-in user.
+     * 
+     * @param user The logged-in user.
+     */
     public void setLoggedInUser(BeanUser user) {
-        this.loggedInUser=user;
+        this.loggedInUser = user;
         this.seller = user;
     }
 
+    /**
+     * Sets the auction card controller instance.
+     * 
+     * @param auctionCardController The auction card controller instance.
+     */
     public void setAuctionCardController(ControllerAuctionCard auctionCardController) {
         this.auctionCardController = auctionCardController;
-
     }
 
+    /**
+     * Sets the auction controller instance.
+     * 
+     * @param auctionController The auction controller instance.
+     */
     public void setAuctionController(ControllerAuction auctionController) {
         this.auctionController = auctionController;
     }
 
+    /**
+     * Sets the auction details to be displayed.
+     * 
+     * @param auction The auction whose details are to be displayed.
+     */
     public void setAuction(BeanAuction auction) {
         this.auction = auction;
 
@@ -84,6 +103,12 @@ public class ControllerAuctionPage {
         highestBidLabel.setText(String.valueOf(auction.getStartingBid()));
     }
 
+    /**
+     * Handles the bid button click event.
+     * 
+     * @param event The action event.
+     * @throws BeanAuction.InvalidBidException if the bid is invalid.
+     */
     @FXML
     private void handleBidButtonClicked(ActionEvent event) throws BeanAuction.InvalidBidException {
         seller = loggedInUser;
@@ -97,20 +122,20 @@ public class ControllerAuctionPage {
         System.out.println("seller: " + seller);
 
         if (seller != null) {
-
             double bidAmount = Double.parseDouble(bidAmountField.getText());
-
             auctionCardController.getSelectedAuction().placeBid(seller, bidAmount);
-
             updateHighestBidLabel();
-
             bidAmountField.clear();
-        }else {
+        } else {
             System.out.println("null");
         }
-
     }
 
+    /**
+     * Handles the back button action.
+     * 
+     * @param event The action event.
+     */
     @FXML
     private void handleBackButton(ActionEvent event) {
         try {
@@ -135,6 +160,11 @@ public class ControllerAuctionPage {
 
     private ControllerUserPage userPageController;
 
+    /**
+     * Navigates to the user page.
+     * 
+     * @param event The action event.
+     */
     @FXML
     private void UserPage(ActionEvent event){
         try {
@@ -145,13 +175,14 @@ public class ControllerAuctionPage {
             userPageController.setUser(seller);
 
             main.setScene(root);
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e);
         }
     }
 
-
-
+    /**
+     * Updates the highest bid label.
+     */
     private void updateHighestBidLabel() {
         if (auctionCardController.getSelectedAuction() != null && !auctionCardController.getSelectedAuction().getBids().isEmpty()) {
             BeanBid highestBid = Collections.max(auctionCardController.getSelectedAuction().getBids(), Comparator.comparingDouble(BeanBid::getAmount));
@@ -159,6 +190,9 @@ public class ControllerAuctionPage {
         }
     }
 
+    /**
+     * Updates the winner label.
+     */
     private void updateWinnerLabel() {
         if (auctionCardController.getSelectedAuction() != null) {
             BeanUser winner = auctionCardController.getSelectedAuction().getWinner();
@@ -169,6 +203,4 @@ public class ControllerAuctionPage {
             }
         }
     }
-
-
 }

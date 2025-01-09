@@ -16,11 +16,8 @@ import java.util.ResourceBundle;
 
 public class ControllerAuctionsPage implements Initializable {
 
-
     private Main mainApplication;
-
     public BeanUser loggedInUser;
-
 
     @FXML
     private Button exitButton;
@@ -33,14 +30,30 @@ public class ControllerAuctionsPage implements Initializable {
 
     private AuctionManager auctionManager;
 
+    /**
+     * Sets the logged-in user.
+     * 
+     * @param user The logged-in user.
+     */
     public void setLoggedInUser(BeanUser user) {
         this.loggedInUser = user;
     }
 
+    /**
+     * Sets the main application instance.
+     * 
+     * @param mainApplication The main application instance.
+     */
     public void setMainApplication(Main mainApplication) {
         this.mainApplication = mainApplication;
     }
 
+    /**
+     * Initializes the controller class.
+     * 
+     * @param location The location used to resolve relative paths for the root object, or null if the location is not known.
+     * @param resources The resources used to localize the root object, or null if the root object was not localized.
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         auctionManager = new AuctionManager();
@@ -50,7 +63,11 @@ public class ControllerAuctionsPage implements Initializable {
         displayAuctions(auctions);
     }
 
-
+    /**
+     * Displays the given auctions.
+     * 
+     * @param auctions The list of auctions to be displayed.
+     */
     private void displayAuctions(ArrayList<BeanAuction> auctions) {
         auctionCardsContainer.getChildren().clear();
 
@@ -59,6 +76,11 @@ public class ControllerAuctionsPage implements Initializable {
         }
     }
 
+    /**
+     * Creates an auction card for the given auction.
+     * 
+     * @param auction The auction for which to create a card.
+     */
     private void createAuctionCard(BeanAuction auction) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("auction_card.fxml"));
@@ -74,13 +96,18 @@ public class ControllerAuctionsPage implements Initializable {
         }
     }
 
-
+    /**
+     * Handles the quit action.
+     */
     @FXML
     private void quit() {
         Stage stage = (Stage) exitButton.getScene().getWindow();
         stage.close();
     }
 
+    /**
+     * Handles the search action.
+     */
     @FXML
     private void handleSearch() {
         String searchQuery = searchField.getText();
@@ -90,6 +117,9 @@ public class ControllerAuctionsPage implements Initializable {
         displayAuctions(searchResults);
     }
 
+    /**
+     * Handles the create auction action.
+     */
     @FXML
     private void handleCreateAuction() {
         try {
@@ -107,12 +137,8 @@ public class ControllerAuctionsPage implements Initializable {
         List<Node> auctionItems = new ArrayList<>();
 
         for (BeanAuction auction : auctions) {
-
             auctionCardsContainer.setUserData(auction);
-
             auctionItems.add(auctionCardsContainer);
         }
     }
-
-
 }

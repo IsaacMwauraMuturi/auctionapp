@@ -9,6 +9,9 @@ public class DatabaseHandler {
 
     private Connection connection;
 
+    /**
+     * Constructor initializes the database connection.
+     */
     public DatabaseHandler() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -18,10 +21,18 @@ public class DatabaseHandler {
         }
     }
 
+    /**
+     * Gets the database connection.
+     * 
+     * @return The database connection.
+     */
     public Connection getConnection() {
         return connection;
     }
 
+    /**
+     * Closes the database connection.
+     */
     public void closeConnection() {
         try {
             connection.close();

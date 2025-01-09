@@ -15,13 +15,15 @@ import java.util.Optional;
 public class ControllerAuctionCard {
 
     private BeanUser user;
-
     private BeanAuction selectedAuction;
-
     private Main mainApplication;
-
     private ControllerAuction auctionController;
 
+    /**
+     * Sets the auction controller instance.
+     * 
+     * @param auctionController The auction controller instance.
+     */
     public void setAuctionController(ControllerAuction auctionController) {
         this.auctionController = auctionController;
     }
@@ -38,14 +40,29 @@ public class ControllerAuctionCard {
     @FXML
     private Label auctionStartingBidLabel;
 
+    /**
+     * Sets the main application instance.
+     * 
+     * @param mainApplication The main application instance.
+     */
     public void setMainApplication(Main mainApplication) {
         this.mainApplication = mainApplication;
     }
 
+    /**
+     * Sets the logged-in user.
+     * 
+     * @param loggedInUser The logged-in user.
+     */
     public void setUser(BeanUser loggedInUser) {
         this.user = loggedInUser;
     }
 
+    /**
+     * Sets the auction data to be displayed.
+     * 
+     * @param auction The auction whose data is to be displayed.
+     */
     public void setAuctionData(BeanAuction auction) {
         AuctionManager auctionManager = new AuctionManager();
         ArrayList<BeanAuction> auctions = auctionManager.getActiveAuctions();
@@ -64,14 +81,29 @@ public class ControllerAuctionCard {
         }
     }
 
+    /**
+     * Sets the selected auction.
+     * 
+     * @param auction The selected auction.
+     */
     public void setSelectedAuction(BeanAuction auction) {
         selectedAuction = auction;
     }
 
+    /**
+     * Gets the selected auction.
+     * 
+     * @return The selected auction.
+     */
     public BeanAuction getSelectedAuction() {
         return selectedAuction;
     }
 
+    /**
+     * Handles the auction click event.
+     * 
+     * @param event The mouse event.
+     */
     @FXML
     private void handleAuctionClick(MouseEvent event) {
         if (selectedAuction == null) {
@@ -96,11 +128,9 @@ public class ControllerAuctionCard {
 
             Scene auctionPageScene = new Scene(root);
             currentStage.setScene(auctionPageScene);
-
             currentStage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
 }
