@@ -1,4 +1,3 @@
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import java.util.ArrayList;
@@ -17,10 +16,20 @@ public class ControllerUserPageCard {
     @FXML
     private Label auctionStartingBidLabel;
 
+    /**
+     * Sets the user whose data is to be displayed.
+     * 
+     * @param user The user.
+     */
     public void setUser(BeanUser user) {
         this.user = user;
     }
 
+    /**
+     * Sets the auction data to be displayed.
+     * 
+     * @param auction The auction whose data is to be displayed.
+     */
     public void setAuctionData(BeanAuction auction) {
         AuctionManager auctionManager = new AuctionManager();
         ArrayList<BeanAuction> auctions = auctionManager.getAuctionsByUser(user);
@@ -38,5 +47,4 @@ public class ControllerUserPageCard {
             System.out.println("Auction not found in the loaded data.");
         }
     }
-
 }
