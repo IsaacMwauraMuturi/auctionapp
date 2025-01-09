@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControllerAuction">
+   <children>
+      <Label layoutX="261.0" layoutY="45.0" text="Auction Name:">
+         <font>
+            <Font name="Bell MT Bold" size="14.0" />
+         </font></Label>
+      <TextField fx:id="auctionNameTextField" layoutX="227.0" layoutY="62.0" style="-fx-border-color: black;" />
+      <Label layoutX="269.0" layoutY="104.0" text="Description:">
+         <font>
+            <Font name="Bell MT Bold" size="14.0" />
+         </font></Label>
+      <TextArea fx:id="descriptionTextArea" layoutX="228.0" layoutY="123.0" prefHeight="37.0" prefWidth="149.0" style="-fx-border-color: black;" />
+      <Label layoutX="270.0" layoutY="170.0" text="Starting Bid:">
+         <font>
+            <Font name="Bell MT Bold" size="14.0" />
+         </font></Label>
+      <TextField fx:id="startingBidTextField" layoutX="228.0" layoutY="188.0" prefHeight="25.0" prefWidth="149.0" style="-fx-border-color: black;" />
+      <Label layoutX="275.0" layoutY="226.0" text="Start Time:">
+         <font>
+            <Font name="Bell MT Bold" size="14.0" />
+         </font></Label>
+      <DatePicker fx:id="startTimePicker" layoutX="226.0" layoutY="243.0" prefHeight="25.0" prefWidth="149.0" style="-fx-border-color: black;" />
+      <Label layoutX="276.0" layoutY="274.0" text="End Time:">
+         <font>
+            <Font name="Bell MT Bold" size="14.0" />
+         </font></Label>
+      <DatePicker fx:id="endTimePicker" layoutX="229.0" layoutY="291.0" prefHeight="25.0" prefWidth="149.0" style="-fx-border-color: black;" />
+      <Button fx:id="createAuctionButton" layoutX="244.0" layoutY="331.0" mnemonicParsing="false" onAction="#handleCreateAuction" style="-fx-background-color: black; -fx-border-color: black;" text="Create Auction" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Bell MT Bold" size="14.0" />
+         </font></Button>
+      <AnchorPane prefHeight="39.0" prefWidth="600.0" style="-fx-background-color: #e8e6e6;">
+         <children>
+            <Button fx:id="backButton" layoutX="21.0" layoutY="4.0" mnemonicParsing="false" onAction="#handleBackButton" style="-fx-background-color: black; -fx-border-color: black;" text="⬅Get Back" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

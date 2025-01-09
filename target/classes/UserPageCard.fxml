@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="64.0" prefWidth="427.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControllerUserPageCard">
+   <children>
+      <Label fx:id="auctionNameLabel" alignment="CENTER" layoutX="160.0" layoutY="6.0" prefHeight="17.0" prefWidth="107.0" textAlignment="CENTER">
+         <font>
+            <Font name="Bell MT Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="auctionDescriptionLabel" alignment="TOP_LEFT" layoutX="14.0" layoutY="23.0" prefHeight="34.0" prefWidth="183.0" style="-fx-border-color: BLACK;">
+         <font>
+            <Font name="Franklin Gothic Book" size="13.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="214.0" layoutY="24.0" prefHeight="17.0" prefWidth="101.0" text="Starting Bid:" textAlignment="CENTER">
+         <font>
+            <Font name="Bell MT Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="auctionStartingBidLabel" alignment="CENTER" layoutX="304.0" layoutY="24.0" prefHeight="17.0" prefWidth="101.0" textAlignment="CENTER">
+         <font>
+            <Font name="Bell MT Bold" size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

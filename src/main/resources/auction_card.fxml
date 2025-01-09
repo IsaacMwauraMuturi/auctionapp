@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleAuctionClick" prefHeight="64.0" prefWidth="427.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 0.8; -fx-border-radius: 0;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControllerAuctionCard">
+    <children>
+        <Label fx:id="auctionDescriptionLabel" alignment="TOP_LEFT" contentDisplay="BOTTOM" layoutX="5.0" layoutY="22.0" prefHeight="36.0" prefWidth="185.0" style="-fx-border-color: BLACK; -fx-border-radius: 3; -fx-border-width: 1;" textAlignment="CENTER">
+            <font>
+                <Font name="Franklin Gothic Book" size="13.0" />
+            </font>
+        </Label>
+        <Label fx:id="auctionNameLabel" contentDisplay="BOTTOM" layoutX="141.0" layoutY="6.0" prefHeight="17.0" prefWidth="146.0" textAlignment="CENTER">
+            <font>
+                <Font name="Bell MT Bold" size="14.0" />
+            </font>
+        </Label>
+      <Label fx:id="auctionStartingBidLabel" alignment="TOP_CENTER" contentDisplay="BOTTOM" layoutX="302.0" layoutY="24.0" prefHeight="17.0" prefWidth="60.0" textAlignment="CENTER" textFill="#2c2b2b" wrapText="true">
+         <font>
+            <Font name="Bell MT Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label alignment="TOP_CENTER" contentDisplay="BOTTOM" layoutX="214.0" layoutY="24.0" prefHeight="17.0" prefWidth="97.0" text="starting bid:" textAlignment="CENTER" textFill="#2c2b2b" wrapText="true">
+         <font>
+            <Font name="Bell MT Bold" size="14.0" />
+         </font>
+      </Label>
+    </children>
+   <padding>
+      <Insets bottom="3.0" top="5.0" />
+   </padding>   
+</AnchorPane>
